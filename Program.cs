@@ -21,12 +21,14 @@ namespace hashcollection
     {
         static void Main(string[] args)
         {
+			var a = new HashSet<int>();
+
             var hash1 = new MyHashSet<int>();
             hash1.Add(1);
 
-            Console.WriteLine(hash1.HasKey(1));
-            Console.WriteLine(hash1.HasKey(2));
-            Console.WriteLine(hash1.HasKey(3));
+            Console.WriteLine(hash1.Contains(1));
+            Console.WriteLine(hash1.Contains(2));
+            Console.WriteLine(hash1.Contains(3));
 
             Console.WriteLine("--------------------------------------");
 
@@ -52,18 +54,18 @@ namespace hashcollection
             hash2.Add(o9);
             hash2.Add(o10);
 
-            hash2.RemoveKey(o2);
+            hash2.Remove(o2);
 
-            Console.WriteLine(hash2.HasKey(o1));
-            Console.WriteLine(hash2.HasKey(o2));
-            Console.WriteLine(hash2.HasKey(o3));
-            Console.WriteLine(hash2.HasKey(o4));
-            Console.WriteLine(hash2.HasKey(o5));
-            Console.WriteLine(hash2.HasKey(o6));
-            Console.WriteLine(hash2.HasKey(o7));
-            Console.WriteLine(hash2.HasKey(o8));
-            Console.WriteLine(hash2.HasKey(o9));
-            Console.WriteLine(hash2.HasKey(o10));
+            Console.WriteLine(hash2.Contains(o1));
+            Console.WriteLine(hash2.Contains(o2));
+            Console.WriteLine(hash2.Contains(o3));
+            Console.WriteLine(hash2.Contains(o4));
+            Console.WriteLine(hash2.Contains(o5));
+            Console.WriteLine(hash2.Contains(o6));
+            Console.WriteLine(hash2.Contains(o7));
+            Console.WriteLine(hash2.Contains(o8));
+            Console.WriteLine(hash2.Contains(o9));
+            Console.WriteLine(hash2.Contains(o10));
         }
     }
 }
