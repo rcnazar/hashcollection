@@ -6,7 +6,7 @@ using System.Linq;
 namespace HashCollection
 {
 
-    public class MyHashSet<T> : IEnumerable<T>, ICollection<T>
+    public class MyHashTable<T> : IEnumerable<T>, ICollection<T>
 	{
         private List<ValueHash<T>>[] _arr;
         private int _count = 0;
@@ -14,7 +14,7 @@ namespace HashCollection
 		public int Count => _count;
 		public bool IsReadOnly => false;
 
-		public MyHashSet(int size = 16, decimal fill = 0.75m)
+		public MyHashTable(int size = 16, decimal fill = 0.75m)
         {
             _arr = new List<ValueHash<T>>[size];
             _fill = fill;
@@ -93,7 +93,7 @@ namespace HashCollection
                 return;
             }
 
-            Console.Write($"Rehashing: {_arr.Length} -> {_arr.Length * 2}");
+            Console.WriteLine($"Rehashing: {_arr.Length} -> {_arr.Length * 2}");
 
             var _arrOld = _arr;
             _arr = new List<ValueHash<T>>[_arr.Length * 2];
@@ -110,9 +110,7 @@ namespace HashCollection
                     AddValueHash(item);
                 }
             }
-
-			Console.WriteLine($" -> concluído");
-		}
+        }
 
 		public IEnumerator<T> GetEnumerator()
 		{
@@ -141,7 +139,7 @@ namespace HashCollection
 
 		public struct Enumerator : IEnumerator<T>, IEnumerator
 		{
-			private MyHashSet<T> _hashSet;
+			private MyHashTable<T> _hashSet;
 			private int _index;
 			private int _indexSub;
 			private T _current;
@@ -150,7 +148,7 @@ namespace HashCollection
 
 			T IEnumerator<T>.Current => _current;
 
-			internal Enumerator(MyHashSet<T> hashSet)
+			internal Enumerator(MyHashTable<T> hashSet)
 			{
 				_hashSet = hashSet;
 				_index = 0;
