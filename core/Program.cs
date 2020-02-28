@@ -1,26 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HashCollection;
+using MyCollection.Hash;
 
 
 namespace hashcollection
 {
 
-    class Obj
-    {
-        private string _valor;
+	public class Obj
+	{
+		public int Val { get; set; }
 
-        public Obj(string valor)
-        {
-            _valor = valor;
-        }
-    }
+		public override int GetHashCode()
+		{
+			return Val.GetHashCode();
+		}
+	}
 
-    class Program
+	class Program
     {
         static void Main(string[] args)
         {
+			//var h = new H.HashSet<Obj>();
+			//h.Add(new Obj { Val = 1 });
+			//h.Add(new Obj { Val = 1 });
+			//h.Add(new Obj { Val = 2 });
+			//h.Add(new Obj { Val = 3 });
+
 			//var a = new HashSet<int>();
 
 			//         var hash1 = new MyHashSet<int>();

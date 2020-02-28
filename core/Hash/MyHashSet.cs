@@ -3,15 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HashCollection
+namespace MyCollection.Hash
 {
 
     public class MyHashSet<T> : IEnumerable<T>, ICollection<T>
 	{
         private List<ValueHash<T>>[] _arr;
-        private int _count = 0;
-        private decimal _fill;
-		public int Count => _count;
+		private decimal _fill;
+		public int Count { get; private set; } = 0;
 		public bool IsReadOnly => false;
 
 		public MyHashSet(int size = 16, decimal fill = 0.75m)
@@ -24,7 +23,7 @@ namespace HashCollection
         {
             if (AddValueHash(new ValueHash<T>(value)))
 			{
-				_count++;
+				Count++;
 			}
 
 			Rehash();
@@ -67,7 +66,7 @@ namespace HashCollection
             }
 
             _arr[index].Remove(valueHash);
-			_count--;
+			Count--;
 			return true;
 		}
 
@@ -88,7 +87,7 @@ namespace HashCollection
 
         private void Rehash()
         {
-            if (_count/_arr.Length < _fill)
+            if (Count/_arr.Length < _fill)
             {
                 return;
             }
@@ -111,7 +110,7 @@ namespace HashCollection
                 }
             }
 
-			Console.WriteLine($" -> concluído");
+			Console.WriteLine($" -> concluï¿½do");
 		}
 
 		public IEnumerator<T> GetEnumerator()
@@ -127,7 +126,7 @@ namespace HashCollection
 		public void Clear()
 		{
 			Array.Clear(_arr, 0, _arr.Length);
-			_count--;
+			Count--;
 		}
 
 		public void CopyTo(T[] array, int arrayIndex)

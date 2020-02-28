@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace HashCollection
+namespace MyCollection.Hash
 {
 
     public class ValueHash<T>
